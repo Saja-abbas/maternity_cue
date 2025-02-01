@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:maternity_cue/layout/colors.dart';
+import 'package:maternity_cue/layout/login_screen.dart';
 
 import '../Images/images.dart';
 
@@ -95,6 +95,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               elevation: 0,
               onTap: () {
                 if (_currentIndex == onBoardinglist.length - 1) {
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LoginScreen(),),
+                    (route) => false,);
                 } else {
                   _pageController1.nextPage(
                     duration: const Duration(milliseconds: 500),
@@ -203,14 +205,7 @@ class _PrimaryButtonState extends State<PrimaryButton>
             ),
             child: Text(
               widget.text,
-              style: GoogleFonts.plusJakartaSans(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppColor.kWhite)
-                  .copyWith(
-                      color: widget.textColor,
-                      fontWeight: FontWeight.w500,
-                      fontSize: widget.fontSize),
+              
             ),
           ),
         ),
@@ -255,11 +250,6 @@ class OnboardingTextCard extends StatelessWidget {
           Text(
             onBoardingModel.title,
             textAlign: TextAlign.center,
-            style: GoogleFonts.plusJakartaSans(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: AppColor.kGrayscaleDark100,
-            ).copyWith(fontSize: 24),
           ),
           const SizedBox(
             height: 16,
@@ -267,11 +257,7 @@ class OnboardingTextCard extends StatelessWidget {
           Text(
             onBoardingModel.description,
             textAlign: TextAlign.center,
-            style: GoogleFonts.plusJakartaSans(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: AppColor.kWhite)
-                .copyWith(color: AppColor.kGrayscale40, fontSize: 14),
+            
           ),
         ],
       ),
